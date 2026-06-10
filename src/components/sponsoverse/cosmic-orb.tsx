@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 const RING_GRADIENT =
-  "conic-gradient(from 90deg, #fbbf24, #10b981, #8b5cf6, #f472b6, #fbbf24)";
+  "conic-gradient(from 90deg, #ffe7a3, #ffd977, #ffe7a3, #71d8ff, #ffe7a3)";
 
 const RING_MASK =
   "radial-gradient(closest-side, transparent calc(100% - 14px), #000 calc(100% - 13px), #000 100%)";
@@ -50,9 +50,9 @@ export function CosmicOrb({ className }: { className?: string }) {
         className="absolute inset-[14%] z-10 overflow-hidden rounded-full"
         style={{
           background:
-            "radial-gradient(circle at 32% 28%, #c4b5fd 0%, #8b5cf6 32%, #4c1d95 68%, #0b0d20 100%)",
+            "radial-gradient(circle at 32% 28%, #d4d4ff 0%, #8f92ff 32%, #5557c9 68%, #1c1f5c 100%)",
           boxShadow:
-            "0 0 120px 10px rgba(139,92,246,0.35), inset -34px -34px 90px rgba(0,0,0,0.65), inset 10px 10px 40px rgba(255,255,255,0.08)",
+            "0 0 120px 10px rgba(124,125,255,0.35), inset -34px -34px 90px rgba(0,0,0,0.65), inset 10px 10px 40px rgba(255,255,255,0.08)",
         }}
         animate={{ y: [0, -14, 0] }}
         transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
@@ -60,7 +60,7 @@ export function CosmicOrb({ className }: { className?: string }) {
         <div className="absolute inset-0 rounded-full opacity-70" style={{ backgroundImage: SPHERE_DOTS }} />
         <div
           className="absolute inset-0 rounded-full"
-          style={{ background: "radial-gradient(circle at 70% 75%, rgba(16,185,129,0.3), transparent 55%)" }}
+          style={{ background: "radial-gradient(circle at 70% 75%, rgba(255,217,119,0.3), transparent 55%)" }}
         />
       </motion.div>
 

@@ -53,49 +53,50 @@
 }
 
 :root {
-  /* Sponsoverse "Aurora" theme */
-  --background: #060f0d;
-  --foreground: #e7f5ef;
+  /* Sponsoverse "Aurora Nova" theme */
+  --background: #05081f;
+  --foreground: #e5e7eb;
   --card: oklch(1 0 0 / 4%);
-  --card-foreground: #e7f5ef;
-  --popover: #0a1815;
-  --popover-foreground: #e7f5ef;
-  --primary: #10b981;
-  --primary-foreground: #04140f;
-  --secondary: #16261f;
-  --secondary-foreground: #e7f5ef;
-  --muted: #0e1a17;
-  --muted-foreground: #93aaa2;
-  --accent: #fbbf24;
-  --accent-foreground: #2a1d00;
-  --destructive: #f43f5e;
+  --card-foreground: #e5e7eb;
+  --popover: #0a1033;
+  --popover-foreground: #e5e7eb;
+  --primary: #7c7dff;
+  --primary-foreground: #05081f;
+  --secondary: #121b4d;
+  --secondary-foreground: #e5e7eb;
+  --muted: #0a1033;
+  --muted-foreground: #aab0c5;
+  --accent: #ffd977;
+  --accent-foreground: #05081f;
+  --destructive: #ff7d6e;
   --border: oklch(1 0 0 / 10%);
   --input: oklch(1 0 0 / 12%);
-  --ring: #10b981;
-  --chart-1: #10b981;
-  --chart-2: #8b5cf6;
-  --chart-3: #fbbf24;
-  --chart-4: #f472b6;
-  --chart-5: #34d399;
+  --ring: #7c7dff;
+  --chart-1: #7c7dff;
+  --chart-2: #ffd977;
+  --chart-3: #ff7d6e;
+  --chart-4: #71d8ff;
+  --chart-5: #8fe7d8;
   --radius: 1rem;
-  --sidebar: #0a1815;
-  --sidebar-foreground: #e7f5ef;
-  --sidebar-primary: #10b981;
-  --sidebar-primary-foreground: #04140f;
-  --sidebar-accent: #16261f;
-  --sidebar-accent-foreground: #e7f5ef;
+  --sidebar: #0a1033;
+  --sidebar-foreground: #e5e7eb;
+  --sidebar-primary: #7c7dff;
+  --sidebar-primary-foreground: #05081f;
+  --sidebar-accent: #121b4d;
+  --sidebar-accent-foreground: #e5e7eb;
   --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: #10b981;
+  --sidebar-ring: #7c7dff;
 
   /* Sponsorship tier accents */
-  --comet: #34d399;
-  --star: #a78bfa;
-  --nova: #fbbf24;
-  --galaxy: #f472b6;
+  --comet: #71d8ff;
+  --star: #7c7dff;
+  --nova: #ff7d6e;
+  --galaxy: #ffd977;
 
   /* Brand gradients */
-  --gradient-cosmic: linear-gradient(135deg, #10b981 0%, #8b5cf6 100%);
-  --gradient-nova: linear-gradient(135deg, #f472b6 0%, #8b5cf6 50%, #10b981 100%);
+  --gradient-cosmic: linear-gradient(135deg, #121b4d 0%, #7c7dff 100%);
+  --gradient-text: linear-gradient(135deg, #a6a8ff 0%, #71d8ff 55%, #8fe7d8 100%);
+  --gradient-nova: linear-gradient(135deg, #ff7d6e 0%, #7c7dff 50%, #71d8ff 100%);
 }
 
 @layer base {
@@ -116,7 +117,7 @@
     @apply bg-card border border-white/10 backdrop-blur-xl;
   }
   .text-gradient-cosmic {
-    background-image: var(--gradient-cosmic);
+    background-image: var(--gradient-text);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;

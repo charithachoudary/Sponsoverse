@@ -17,8 +17,10 @@ import {
   Wand2,
 } from "lucide-react";
 import { SiteHeader } from "@/components/sponsoverse/site-header";
-import { CosmicOrb } from "@/components/sponsoverse/cosmic-orb";
+import { HeroVisual } from "@/components/sponsoverse/hero-visual";
 import { BentoCard } from "@/components/sponsoverse/bento-card";
+import { ConstellationStats } from "@/components/sponsoverse/constellation-stats";
+import { MagneticButton } from "@/components/sponsoverse/magnetic-button";
 import { Reveal } from "@/components/sponsoverse/reveal";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -97,14 +99,16 @@ export default function Home() {
               </Reveal>
               <Reveal delay={0.15}>
                 <div className="mt-10 flex flex-col gap-3 sm:flex-row">
-                  <Button
-                    size="lg"
-                    render={<Link href="/sign-up?role=ORGANIZER" />}
-                    className="bg-gradient-cosmic text-white hover:opacity-90"
-                  >
-                    I&apos;m an Organizer
-                    <ArrowRight data-icon="inline-end" />
-                  </Button>
+                  <MagneticButton>
+                    <Button
+                      size="lg"
+                      render={<Link href="/sign-up?role=ORGANIZER" />}
+                      className="bg-gradient-cosmic text-white hover:opacity-90"
+                    >
+                      I&apos;m an Organizer
+                      <ArrowRight data-icon="inline-end" />
+                    </Button>
+                  </MagneticButton>
                   <Button size="lg" variant="outline" render={<Link href="/sign-up?role=SPONSOR" />}>
                     I&apos;m a Sponsor
                   </Button>
@@ -116,7 +120,7 @@ export default function Home() {
             </div>
 
             <Reveal delay={0.1} className="lg:pl-8">
-              <CosmicOrb />
+              <HeroVisual />
             </Reveal>
           </div>
         </section>
@@ -137,6 +141,8 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        <ConstellationStats />
 
         {/* Bento features */}
         <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28">
@@ -377,14 +383,16 @@ export default function Home() {
                   sponsorship opportunities today.
                 </p>
                 <div className="mt-2 flex flex-col gap-3 sm:flex-row">
-                  <Button
-                    size="lg"
-                    render={<Link href="/sign-up" />}
-                    className="bg-gradient-cosmic text-white hover:opacity-90"
-                  >
-                    Get started for free
-                    <ArrowRight data-icon="inline-end" />
-                  </Button>
+                  <MagneticButton>
+                    <Button
+                      size="lg"
+                      render={<Link href="/sign-up" />}
+                      className="bg-gradient-cosmic text-white hover:opacity-90"
+                    >
+                      Get started for free
+                      <ArrowRight data-icon="inline-end" />
+                    </Button>
+                  </MagneticButton>
                   <Button size="lg" variant="outline" render={<Link href="/sponsor" />}>
                     Browse events
                   </Button>
@@ -395,8 +403,24 @@ export default function Home() {
         </section>
       </main>
 
-      <footer className="border-t border-white/5 py-12">
-        <div className="mx-auto grid max-w-6xl gap-8 px-4 sm:px-6 md:grid-cols-[2fr_1fr_1fr]">
+      <footer className="relative overflow-hidden border-t border-white/5 py-12">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -bottom-24 -left-20 h-56 w-56 rounded-full opacity-20 blur-3xl"
+          style={{
+            background:
+              "radial-gradient(circle at 35% 30%, #a6a8ff 0%, #5557c9 45%, transparent 75%)",
+          }}
+        />
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -top-16 -right-24 h-72 w-72 rounded-full opacity-15 blur-3xl"
+          style={{
+            background:
+              "radial-gradient(circle at 60% 40%, #ffe7a3 0%, #ff7d6e 50%, transparent 75%)",
+          }}
+        />
+        <div className="relative mx-auto grid max-w-6xl gap-8 px-4 sm:px-6 md:grid-cols-[2fr_1fr_1fr]">
           <div>
             <span className="font-heading text-xl font-bold tracking-tight">
               <span className="text-gradient-cosmic">Sponsoverse</span>
