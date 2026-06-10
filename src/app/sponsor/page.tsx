@@ -37,7 +37,7 @@ export default async function SponsorDiscoverPage({
 
   const where: Prisma.EventWhereInput = { status: "PUBLISHED" };
   if (category) where.category = category;
-  if (location) where.location = { contains: location };
+  if (location) where.location = { contains: location, mode: "insensitive" };
   if (minAudience) where.audienceSize = { gte: Number(minAudience) };
   if (maxBudget) where.tiers = { some: { price: { lte: Number(maxBudget) } } };
 
