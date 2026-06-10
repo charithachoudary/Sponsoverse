@@ -1,0 +1,110 @@
+// Prisma schema for Sponsoverse
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum Role {
+  ORGANIZER
+  SPONSOR
+}
+
+enum TierName {
+  COMET
+  STAR
+  NOVA
+  GALAXY
+}
+
+enum InquiryStatus {
+  PENDING
+  ACCEPTED
+  REJECTED
+}
+
+enum EventStatus {
+  DRAFT
+  PUBLISHED
+}
+
+model User {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String
+  name         String
+  role         Role
+  createdAt    DateTime @default(now())
+
+  organizerProfile OrganizerProfile?
+  sponsorProfile   SponsorProfile?
+  events           Event[]
+  inquiries        Inquiry[]
+}
+
+model OrganizerProfile {
+  id      String  @id @default(cuid())
+  userId  String  @unique
+  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  orgName String
+  bio     String?
+  website String?
+}
+
+model SponsorProfile {
+  id             String  @id @default(cuid())
+  userId         String  @unique
+  user           User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  companyName    String
+  industry       String?
+  targetAudience String?
+  budgetRange    String?
+}
+
+model Event {
+  id                   String      @id @default(cuid())
+  organizerId          String
+  organizer            User        @relation(fields: [organizerId], references: [id], onDelete: Cascade)
+  title                String
+  description          String
+  category             String
+  date                 DateTime
+  location             String
+  audienceSize         Int
+  audienceDemographics String
+  status               EventStatus @default(PUBLISHED)
+  createdAt            DateTime    @default(now())
+
+  tiers     SponsorshipTier[]
+  inquiries Inquiry[]
+}
+
+model SponsorshipTier {
+  id          String   @id @default(cuid())
+  eventId     String
+  event       Event    @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  name        TierName
+  price       Int
+  perks       String
+  maxSponsors Int
+
+  inquiries Inquiry[]
+}
+
+model Inquiry {
+  id        String          @id @default(cuid())
+  eventId   String
+  event     Event           @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  sponsorId String
+  sponsor   User            @relation(fields: [sponsorId], references: [id], onDelete: Cascade)
+  tierId    String
+  tier      SponsorshipTier @relation(fields: [tierId], references: [id], onDelete: Cascade)
+  message   String
+  status    InquiryStatus   @default(PENDING)
+  createdAt DateTime        @default(now())
+}

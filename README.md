@@ -1,36 +1,45 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Sponsoverse
+
+Sponsoverse is a marketplace that bridges **event organizers** and **sponsors** looking for the right audience. Organizers list events and package sponsorship opportunities into tiers (Comet, Star, Nova, Galaxy); sponsors browse, filter, and express interest directly — no cold emails, no middlemen.
+
+## Features
+
+- **Role-based accounts** — sign up as an Organizer or a Sponsor with a tailored profile (org info vs. company/industry/budget).
+- **Event management** — organizers create events with audience demographics and define up to four sponsorship tiers with pricing, perks, and sponsor caps.
+- **Discovery feed** — sponsors browse published events and filter by category, location, audience size, and budget.
+- **Inquiries** — sponsors express interest in a specific tier; organizers review and accept/reject from their dashboard.
+- **Cosmic UI** — a navy/purple/cyan "orbital" theme with glassmorphism cards and gradient accents.
+
+## Tech Stack
+
+- [Next.js](https://nextjs.org) (App Router, TypeScript, Turbopack)
+- [Tailwind CSS v4](https://tailwindcss.com) + [shadcn/ui](https://ui.shadcn.com) (Base UI primitives)
+- [Prisma ORM](https://www.prisma.io) + PostgreSQL ([Neon](https://neon.tech))
+- [Auth.js (NextAuth v5)](https://authjs.dev) — credentials auth with JWT sessions and embedded roles
 
 ## Getting Started
 
-First, run the development server:
+1. Install dependencies:
+   ```bash
+   npm install
+   ```
+2. Copy `.env.example` to `.env` and fill in:
+   - `DATABASE_URL` — a PostgreSQL connection string (e.g. from a free [Neon](https://neon.tech) project)
+   - `AUTH_SECRET` — generate one with `npx auth secret`
+3. Apply the database schema:
+   ```bash
+   npx prisma migrate dev
+   ```
+4. Run the dev server:
+   ```bash
+   npm run dev
+   ```
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Open [http://localhost:3000](http://localhost:3000).
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Roadmap
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- In-app messaging between organizers and sponsors
+- AI-driven sponsor match scoring (audience/budget/industry fit)
+- Sponsorship deck upload + AI extraction of event details
+- Analytics dashboard for organizers and sponsors
