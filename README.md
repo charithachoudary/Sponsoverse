@@ -1,45 +1,226 @@
-# Sponsoverse
+# 🚀 SponsorVerse
 
-Sponsoverse is a marketplace that bridges **event organizers** and **sponsors** looking for the right audience. Organizers list events and package sponsorship opportunities into tiers (Comet, Star, Nova, Galaxy); sponsors browse, filter, and express interest directly — no cold emails, no middlemen.
+### Where Events Meet Their Universe of Sponsors
 
-## Features
+SponsorVerse is a full-stack sponsorship marketplace that connects **event organizers** with **brands and sponsors** looking to reach the right audience.
 
-- **Role-based accounts** — sign up as an Organizer or a Sponsor with a tailored profile (org info vs. company/industry/budget).
-- **Event management** — organizers create events with audience demographics and define up to four sponsorship tiers with pricing, perks, and sponsor caps.
-- **Discovery feed** — sponsors browse published events and filter by category, location, audience size, and budget.
-- **Inquiries** — sponsors express interest in a specific tier; organizers review and accept/reject from their dashboard.
-- **Cosmic UI** — a navy/purple/cyan "orbital" theme with glassmorphism cards and gradient accents.
+Instead of relying on cold emails, spreadsheets, and manual outreach, organizers can publish events with structured sponsorship packages while sponsors discover opportunities that match their industry, audience, and budget.
 
-## Tech Stack
+**Live Demo:** https://sponsoverse.vercel.app
 
-- [Next.js](https://nextjs.org) (App Router, TypeScript, Turbopack)
-- [Tailwind CSS v4](https://tailwindcss.com) + [shadcn/ui](https://ui.shadcn.com) (Base UI primitives)
-- [Prisma ORM](https://www.prisma.io) + PostgreSQL ([Neon](https://neon.tech))
-- [Auth.js (NextAuth v5)](https://authjs.dev) — credentials auth with JWT sessions and embedded roles
+---
 
-## Getting Started
+## ✨ Why SponsorVerse?
 
-1. Install dependencies:
-   ```bash
-   npm install
-   ```
-2. Copy `.env.example` to `.env` and fill in:
-   - `DATABASE_URL` — a PostgreSQL connection string (e.g. from a free [Neon](https://neon.tech) project)
-   - `AUTH_SECRET` — generate one with `npx auth secret`
-3. Apply the database schema:
-   ```bash
-   npx prisma migrate dev
-   ```
-4. Run the dev server:
-   ```bash
-   npm run dev
-   ```
+Finding sponsors is one of the biggest challenges for event organizers.
 
-Open [http://localhost:3000](http://localhost:3000).
+Traditional sponsorship outreach is:
 
-## Roadmap
+* Time-consuming
+* Difficult to scale
+* Highly dependent on personal networks
+* Fragmented across emails, PDFs, and spreadsheets
 
-- In-app messaging between organizers and sponsors
-- AI-driven sponsor match scoring (audience/budget/industry fit)
-- Sponsorship deck upload + AI extraction of event details
-- Analytics dashboard for organizers and sponsors
+SponsorVerse provides a centralized platform where:
+
+* Organizers showcase sponsorship opportunities
+* Sponsors discover relevant events
+* Both parties connect through a structured workflow
+
+---
+
+## 🎯 Core Features
+
+### 👨‍💼 Organizer Portal
+
+* Create and manage events
+* Define audience demographics
+* Publish sponsorship opportunities
+* Configure sponsorship tiers:
+
+  * ☄️ Comet
+  * ⭐ Star
+  * 💥 Nova
+  * 🌌 Galaxy
+* Review incoming sponsor inquiries
+* Accept or reject sponsorship requests
+
+### 🏢 Sponsor Portal
+
+* Browse sponsorship opportunities
+* Filter events by:
+
+  * Category
+  * Location
+  * Audience size
+  * Budget
+* View sponsorship packages
+* Express interest directly from event pages
+
+### 🔐 Authentication & Access Control
+
+* Role-based accounts
+* Organizer-specific workflows
+* Sponsor-specific workflows
+* Secure session management using Auth.js
+
+### ☁️ Production Infrastructure
+
+* PostgreSQL database hosted on Neon
+* Deployed on Vercel
+* Prisma ORM for type-safe database access
+
+---
+
+## 🏗️ System Architecture
+
+```text
+Organizer
+    │
+    ▼
+Create Event
+    │
+    ▼
+Sponsorship Tiers
+    │
+    ▼
+PostgreSQL (Neon)
+    ▲
+    │
+Sponsor Discovery
+    │
+    ▼
+Express Interest
+    │
+    ▼
+Organizer Dashboard
+    │
+    ▼
+Accept / Reject Inquiry
+```
+
+---
+
+## 📸 Screenshots
+
+### Landing Page
+
+![Landing Page](docs/screenshots/landing.png)
+
+### Organizer Dashboard
+
+![Organizer Dashboard](docs/screenshots/organizer_dashboard.png)
+
+### Sponsor Discovery
+
+![Sponsor Discovery](docs/screenshots/sponsor_dashboard.png)
+
+### Inquiry Management
+
+![Inquiry Management](docs/screenshots/inquiries.png)
+
+---
+
+## 🛠 Tech Stack
+
+### Frontend
+
+* Next.js 16
+* React
+* TypeScript
+* Tailwind CSS v4
+* shadcn/ui
+
+### Backend
+
+* Next.js Server Actions
+* Auth.js (NextAuth v5)
+
+### Database
+
+* PostgreSQL
+* Prisma ORM
+* Neon Serverless Postgres
+
+### Deployment
+
+* Vercel
+
+---
+
+## 🚀 Running Locally
+
+### Clone Repository
+
+```bash
+git clone https://github.com/nehal2905/sponsoverse.git
+cd sponsoverse
+```
+
+### Install Dependencies
+
+```bash
+npm install
+```
+
+### Configure Environment Variables
+
+```env
+DATABASE_URL=
+AUTH_SECRET=
+```
+
+### Apply Database Migrations
+
+```bash
+npx prisma migrate dev
+```
+
+### Start Development Server
+
+```bash
+npm run dev
+```
+
+Visit:
+
+```text
+http://localhost:3000
+```
+
+---
+
+## 📊 Project Highlights
+
+* Full-stack SaaS application
+* Production deployment on Vercel
+* PostgreSQL database integration
+* Role-based authorization
+* Real-time sponsor inquiry workflow
+* Responsive modern UI
+* Type-safe backend using Prisma
+
+---
+
+## 🔮 Future Roadmap
+
+* AI-powered sponsor matching engine
+* Sponsorship deck upload & analysis
+* Event recommendation system
+* In-app messaging
+* Analytics dashboard
+* Payment processing
+* Sponsor performance insights
+
+---
+
+## 👨‍💻 Author
+
+**Akula Nehal**
+
+Building secure, scalable software across:
+
+* Full-Stack Development
+* Cybersecurity
+* Detection Engineering
+* AI Applications
