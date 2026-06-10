@@ -53,49 +53,49 @@
 }
 
 :root {
-  /* Sponsoverse cosmic theme */
-  --background: #05060f;
-  --foreground: #e7e8f7;
+  /* Sponsoverse "Aurora" theme */
+  --background: #060f0d;
+  --foreground: #e7f5ef;
   --card: oklch(1 0 0 / 4%);
-  --card-foreground: #e7e8f7;
-  --popover: #0b0d20;
-  --popover-foreground: #e7e8f7;
-  --primary: #8b5cf6;
-  --primary-foreground: #ffffff;
-  --secondary: #1b1e3a;
-  --secondary-foreground: #e7e8f7;
-  --muted: #14172e;
-  --muted-foreground: #9498ba;
-  --accent: #22d3ee;
-  --accent-foreground: #05060f;
+  --card-foreground: #e7f5ef;
+  --popover: #0a1815;
+  --popover-foreground: #e7f5ef;
+  --primary: #10b981;
+  --primary-foreground: #04140f;
+  --secondary: #16261f;
+  --secondary-foreground: #e7f5ef;
+  --muted: #0e1a17;
+  --muted-foreground: #93aaa2;
+  --accent: #fbbf24;
+  --accent-foreground: #2a1d00;
   --destructive: #f43f5e;
   --border: oklch(1 0 0 / 10%);
   --input: oklch(1 0 0 / 12%);
-  --ring: #8b5cf6;
-  --chart-1: #8b5cf6;
-  --chart-2: #22d3ee;
-  --chart-3: #d946ef;
-  --chart-4: #6366f1;
-  --chart-5: #f59e0b;
+  --ring: #10b981;
+  --chart-1: #10b981;
+  --chart-2: #8b5cf6;
+  --chart-3: #fbbf24;
+  --chart-4: #f472b6;
+  --chart-5: #34d399;
   --radius: 1rem;
-  --sidebar: #0b0d20;
-  --sidebar-foreground: #e7e8f7;
-  --sidebar-primary: #8b5cf6;
-  --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #1b1e3a;
-  --sidebar-accent-foreground: #e7e8f7;
+  --sidebar: #0a1815;
+  --sidebar-foreground: #e7f5ef;
+  --sidebar-primary: #10b981;
+  --sidebar-primary-foreground: #04140f;
+  --sidebar-accent: #16261f;
+  --sidebar-accent-foreground: #e7f5ef;
   --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: #8b5cf6;
+  --sidebar-ring: #10b981;
 
   /* Sponsorship tier accents */
-  --comet: #38bdf8;
+  --comet: #34d399;
   --star: #a78bfa;
-  --nova: #f472b6;
-  --galaxy: #facc15;
+  --nova: #fbbf24;
+  --galaxy: #f472b6;
 
   /* Brand gradients */
-  --gradient-cosmic: linear-gradient(135deg, #7c3aed 0%, #22d3ee 100%);
-  --gradient-nova: linear-gradient(135deg, #d946ef 0%, #7c3aed 50%, #22d3ee 100%);
+  --gradient-cosmic: linear-gradient(135deg, #10b981 0%, #8b5cf6 100%);
+  --gradient-nova: linear-gradient(135deg, #f472b6 0%, #8b5cf6 50%, #10b981 100%);
 }
 
 @layer base {
@@ -132,6 +132,17 @@
     animation-iteration-count: infinite;
     animation-timing-function: ease-in-out;
   }
+  .animate-marquee {
+    animation: marquee 32s linear infinite;
+  }
+  .bg-grid-fade {
+    background-image:
+      linear-gradient(to right, rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+    background-size: 56px 56px;
+    -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 40%, transparent 100%);
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 40%, transparent 100%);
+  }
 }
 
 @keyframes twinkle {
@@ -141,5 +152,14 @@
   }
   50% {
     opacity: 0.9;
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
   }
 }
