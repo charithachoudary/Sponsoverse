@@ -43,10 +43,14 @@ export default async function ManageEventPage({
   return (
     <div className="flex min-h-screen flex-col">
       <SiteHeader />
-      <main className="mx-auto w-full max-w-4xl flex-1 px-4 py-10 sm:px-6">
+      <main className="mx-auto w-full max-w-4xl flex-1 px-4 py-12 sm:px-6">
         <Badge variant="secondary">{event.category}</Badge>
-        <h1 className="font-heading mt-2 text-3xl font-bold">{event.title}</h1>
-        <p className="mt-2 max-w-2xl text-muted-foreground">{event.description}</p>
+        <h1 className="font-heading mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">
+          {event.title}
+        </h1>
+        <p className="mt-3 max-w-2xl leading-relaxed text-muted-foreground">
+          {event.description}
+        </p>
         <div className="mt-4 flex flex-wrap gap-x-6 gap-y-2 text-sm text-muted-foreground">
           <span className="flex items-center gap-1.5">
             <Calendar className="h-4 w-4" />
@@ -66,14 +70,16 @@ export default async function ManageEventPage({
           </span>
         </div>
 
-        <Separator className="my-8" />
+        <Separator className="my-10" />
 
-        <h2 className="font-heading text-xl font-bold">Sponsorship tiers</h2>
-        <div className="mt-4 grid gap-4 sm:grid-cols-2">
+        <h2 className="font-heading text-2xl font-semibold tracking-tight">
+          Sponsorship tiers
+        </h2>
+        <div className="mt-5 grid gap-4 sm:grid-cols-2">
           {event.tiers.map((tier) => {
             const perks: string[] = JSON.parse(tier.perks || "[]");
             return (
-              <Card key={tier.id} className="glass">
+              <Card key={tier.id}>
                 <CardHeader>
                   <div className="flex items-center justify-between">
                     <TierBadge tier={tier.name} />
@@ -99,10 +105,11 @@ export default async function ManageEventPage({
           })}
         </div>
 
-        <Separator className="my-8" />
+        <Separator className="my-10" />
 
-        <h2 className="font-heading text-xl font-bold">
-          Inquiries ({event.inquiries.length})
+        <h2 className="font-heading text-2xl font-semibold tracking-tight">
+          Inquiries{" "}
+          <span className="text-muted-foreground">({event.inquiries.length})</span>
         </h2>
         {event.inquiries.length === 0 ? (
           <p className="mt-4 text-sm text-muted-foreground">
@@ -110,10 +117,10 @@ export default async function ManageEventPage({
             attract sponsors!
           </p>
         ) : (
-          <div className="mt-4 space-y-4">
+          <div className="mt-5 space-y-4">
             {event.inquiries.map((inquiry) => (
-              <Card key={inquiry.id} className="glass">
-                <CardContent className="space-y-3 pt-6">
+              <Card key={inquiry.id}>
+                <CardContent className="space-y-3">
                   <div className="flex flex-wrap items-center justify-between gap-2">
                     <div>
                       <p className="font-medium">
@@ -127,7 +134,7 @@ export default async function ManageEventPage({
                     </div>
                   </div>
                   {inquiry.message && (
-                    <p className="rounded-lg bg-white/5 p-3 text-sm text-muted-foreground">
+                    <p className="rounded-lg border-l-2 border-accent/50 bg-muted/60 p-3 text-sm leading-relaxed text-muted-foreground">
                       {inquiry.message}
                     </p>
                   )}
@@ -137,7 +144,7 @@ export default async function ManageEventPage({
                         <input type="hidden" name="inquiryId" value={inquiry.id} />
                         <input type="hidden" name="eventId" value={event.id} />
                         <input type="hidden" name="status" value="ACCEPTED" />
-                        <Button type="submit" size="sm" className="bg-gradient-cosmic text-white hover:opacity-90">
+                        <Button type="submit" size="sm">
                           Accept
                         </Button>
                       </form>

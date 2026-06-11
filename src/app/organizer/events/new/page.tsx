@@ -25,15 +25,18 @@ export default async function NewEventPage() {
   return (
     <div className="flex min-h-screen flex-col">
       <SiteHeader />
-      <main className="mx-auto w-full max-w-3xl flex-1 px-4 py-10 sm:px-6">
-        <h1 className="font-heading text-3xl font-bold">Create a new event</h1>
-        <p className="mt-1 text-muted-foreground">
+      <main className="mx-auto w-full max-w-3xl flex-1 px-4 py-12 sm:px-6">
+        <span className="eyebrow">New listing</span>
+        <h1 className="font-heading mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">
+          Create a new event
+        </h1>
+        <p className="mt-2 text-muted-foreground">
           Tell sponsors about your event and define what each sponsorship tier
           includes.
         </p>
 
-        <form action={createEventAction} className="mt-8 space-y-6">
-          <Card className="glass">
+        <form action={createEventAction} className="mt-10 space-y-6">
+          <Card className="[--card-spacing:--spacing(6)]">
             <CardHeader>
               <CardTitle className="font-heading text-lg">Event details</CardTitle>
             </CardHeader>
@@ -107,7 +110,7 @@ export default async function NewEventPage() {
             </CardContent>
           </Card>
 
-          <Card className="glass">
+          <Card className="[--card-spacing:--spacing(6)]">
             <CardHeader>
               <CardTitle className="font-heading text-lg">Sponsorship tiers</CardTitle>
               <CardDescription>
@@ -117,7 +120,7 @@ export default async function NewEventPage() {
             </CardHeader>
             <CardContent className="space-y-6">
               {TIERS.map((tier) => (
-                <div key={tier.name} className="space-y-3 rounded-xl border border-white/10 p-4">
+                <div key={tier.name} className="space-y-3 rounded-xl border border-border bg-muted/40 p-4">
                   <div className="flex items-center justify-between gap-2">
                     <TierBadge tier={tier.name} />
                     <span className="text-xs text-muted-foreground">{tier.description}</span>
@@ -158,7 +161,7 @@ export default async function NewEventPage() {
             </CardContent>
           </Card>
 
-          <Button type="submit" size="lg" className="w-full bg-gradient-cosmic text-white hover:opacity-90">
+          <Button type="submit" size="lg" className="w-full">
             Publish event
           </Button>
         </form>

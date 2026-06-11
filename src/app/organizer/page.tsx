@@ -26,46 +26,43 @@ export default async function OrganizerDashboardPage() {
   return (
     <div className="flex min-h-screen flex-col">
       <SiteHeader />
-      <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-10 sm:px-6">
-        <div className="flex flex-wrap items-center justify-between gap-4">
+      <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-12 sm:px-6">
+        <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
-            <h1 className="font-heading text-3xl font-bold">Your events</h1>
-            <p className="mt-1 text-muted-foreground">
+            <span className="eyebrow">Organizer dashboard</span>
+            <h1 className="font-heading mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">
+              Your events
+            </h1>
+            <p className="mt-2 text-muted-foreground">
               Manage your events, sponsorship tiers, and incoming inquiries.
             </p>
           </div>
-          <Button
-            render={<Link href="/organizer/events/new" />}
-            className="bg-gradient-cosmic text-white hover:opacity-90"
-          >
+          <Button render={<Link href="/organizer/events/new" />}>
             <Plus className="h-4 w-4" />
             New event
           </Button>
         </div>
 
         {events.length === 0 ? (
-          <Card className="glass mt-8">
+          <Card className="mt-10 border border-dashed bg-transparent ring-0">
             <CardContent className="flex flex-col items-center gap-3 py-16 text-center">
-              <p className="text-lg font-medium">No events yet</p>
+              <p className="font-heading text-xl font-semibold">No events yet</p>
               <p className="max-w-md text-sm text-muted-foreground">
                 Create your first event to start defining sponsorship tiers and
                 attracting sponsors from across the universe.
               </p>
-              <Button
-                render={<Link href="/organizer/events/new" />}
-                className="bg-gradient-cosmic text-white hover:opacity-90"
-              >
+              <Button className="mt-2" render={<Link href="/organizer/events/new" />}>
                 <Plus className="h-4 w-4" />
                 Create your first event
               </Button>
             </CardContent>
           </Card>
         ) : (
-          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {events.map((event) => (
-              <div key={event.id} className="relative">
+              <div key={event.id} className="relative flex flex-col">
                 {event.inquiries.length > 0 && (
-                  <Badge className="absolute -right-2 -top-2 z-10 bg-gradient-nova text-white">
+                  <Badge className="absolute -right-2 -top-2 z-10 bg-accent text-accent-foreground">
                     {event.inquiries.length} new inquir
                     {event.inquiries.length === 1 ? "y" : "ies"}
                   </Badge>
@@ -73,7 +70,7 @@ export default async function OrganizerDashboardPage() {
                 <EventCard event={event} />
                 <Link
                   href={`/organizer/events/${event.id}`}
-                  className="mt-2 block text-center text-sm text-accent hover:underline"
+                  className="mt-2.5 block text-center text-sm font-medium text-accent underline-offset-4 hover:underline"
                 >
                   Manage event &amp; inquiries
                 </Link>

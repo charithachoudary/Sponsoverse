@@ -18,9 +18,13 @@ export function SignUpForm({ defaultRole }: { defaultRole: Role }) {
       <input type="hidden" name="role" value={role} />
 
       <Tabs value={role} onValueChange={(v) => setRole(v as Role)}>
-        <TabsList className="grid w-full grid-cols-2">
-          <TabsTrigger value="ORGANIZER">I&apos;m an Organizer</TabsTrigger>
-          <TabsTrigger value="SPONSOR">I&apos;m a Sponsor</TabsTrigger>
+        <TabsList className="grid w-full grid-cols-2 rounded-full">
+          <TabsTrigger value="ORGANIZER" className="rounded-full">
+            I&apos;m an Organizer
+          </TabsTrigger>
+          <TabsTrigger value="SPONSOR" className="rounded-full">
+            I&apos;m a Sponsor
+          </TabsTrigger>
         </TabsList>
       </Tabs>
 
@@ -41,7 +45,7 @@ export function SignUpForm({ defaultRole }: { defaultRole: Role }) {
       </div>
 
       {role === "ORGANIZER" ? (
-        <div className="space-y-4 rounded-xl border border-white/10 p-4">
+        <div className="space-y-4 rounded-xl border border-border bg-muted/40 p-4">
           <div className="space-y-2">
             <Label htmlFor="orgName">Organization / Event name</Label>
             <Input id="orgName" name="orgName" required placeholder="e.g. TEDx VJIT" />
@@ -56,7 +60,7 @@ export function SignUpForm({ defaultRole }: { defaultRole: Role }) {
           </div>
         </div>
       ) : (
-        <div className="space-y-4 rounded-xl border border-white/10 p-4">
+        <div className="space-y-4 rounded-xl border border-border bg-muted/40 p-4">
           <div className="space-y-2">
             <Label htmlFor="companyName">Company name</Label>
             <Input id="companyName" name="companyName" required placeholder="e.g. Acme Corp" />
@@ -86,11 +90,7 @@ export function SignUpForm({ defaultRole }: { defaultRole: Role }) {
         <p className="text-sm text-destructive">{state.error}</p>
       )}
 
-      <Button
-        type="submit"
-        disabled={pending}
-        className="w-full bg-gradient-cosmic text-white hover:opacity-90"
-      >
+      <Button type="submit" size="lg" disabled={pending} className="w-full">
         {pending ? "Creating account..." : "Create account"}
       </Button>
     </form>

@@ -48,11 +48,16 @@ export default async function EventDetailPage({
   return (
     <div className="flex min-h-screen flex-col">
       <SiteHeader />
-      <main className="mx-auto w-full max-w-4xl flex-1 px-4 py-10 sm:px-6">
+      <main className="mx-auto w-full max-w-4xl flex-1 px-4 py-12 sm:px-6">
         <Badge variant="secondary">{event.category}</Badge>
-        <h1 className="font-heading mt-2 text-3xl font-bold sm:text-4xl">{event.title}</h1>
-        <p className="mt-2 text-sm text-muted-foreground">
-          Hosted by {event.organizer.organizerProfile?.orgName ?? event.organizer.name}
+        <h1 className="font-heading mt-3 text-3xl font-semibold tracking-tight sm:text-5xl">
+          {event.title}
+        </h1>
+        <p className="mt-3 text-sm text-muted-foreground">
+          Hosted by{" "}
+          <span className="font-medium text-foreground">
+            {event.organizer.organizerProfile?.orgName ?? event.organizer.name}
+          </span>
         </p>
 
         <div className="mt-4 flex flex-wrap gap-x-6 gap-y-2 text-sm text-muted-foreground">
@@ -74,25 +79,31 @@ export default async function EventDetailPage({
           </span>
         </div>
 
-        <p className="mt-6 max-w-2xl text-muted-foreground">{event.description}</p>
+        <p className="mt-6 max-w-2xl leading-relaxed text-muted-foreground">
+          {event.description}
+        </p>
 
-        <Card className="glass mt-6">
+        <Card className="mt-8 bg-muted/50 shadow-none">
           <CardHeader>
             <CardTitle className="font-heading text-base">Audience</CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-sm text-muted-foreground">{event.audienceDemographics}</p>
+            <p className="text-sm leading-relaxed text-muted-foreground">
+              {event.audienceDemographics}
+            </p>
           </CardContent>
         </Card>
 
-        <Separator className="my-8" />
+        <Separator className="my-10" />
 
-        <h2 className="font-heading text-xl font-bold">Sponsorship tiers</h2>
-        <div className="mt-4 grid gap-4 sm:grid-cols-2">
+        <h2 className="font-heading text-2xl font-semibold tracking-tight">
+          Sponsorship tiers
+        </h2>
+        <div className="mt-5 grid gap-4 sm:grid-cols-2">
           {event.tiers.map((tier) => {
             const perks: string[] = JSON.parse(tier.perks || "[]");
             return (
-              <Card key={tier.id} className="glass">
+              <Card key={tier.id}>
                 <CardHeader>
                   <div className="flex items-center justify-between">
                     <TierBadge tier={tier.name} />
@@ -123,20 +134,19 @@ export default async function EventDetailPage({
           )}
         </div>
 
-        <Separator className="my-8" />
+        <Separator className="my-10" />
 
-        <h2 className="font-heading text-xl font-bold">Express interest</h2>
+        <h2 className="font-heading text-2xl font-semibold tracking-tight">
+          Express interest
+        </h2>
 
         {!session?.user && (
-          <Card className="glass mt-4">
-            <CardContent className="flex flex-col items-center gap-3 py-10 text-center">
+          <Card className="mt-5">
+            <CardContent className="flex flex-col items-center gap-4 py-10 text-center">
               <p className="text-muted-foreground">
                 Sign in as a sponsor to express interest in this event.
               </p>
-              <Button
-                render={<Link href="/sign-up?role=SPONSOR" />}
-                className="bg-gradient-cosmic text-white hover:opacity-90"
-              >
+              <Button render={<Link href="/sign-up?role=SPONSOR" />}>
                 Sign up as a sponsor
               </Button>
             </CardContent>
@@ -150,8 +160,8 @@ export default async function EventDetailPage({
         )}
 
         {session?.user?.role === "SPONSOR" && existingInquiry && (
-          <Card className="glass mt-4">
-            <CardContent className="flex flex-wrap items-center justify-between gap-2 pt-6">
+          <Card className="mt-5">
+            <CardContent className="flex flex-wrap items-center justify-between gap-2">
               <div>
                 <p className="font-medium">
                   You expressed interest in the {existingInquiry.tier.name.toLowerCase()} tier
@@ -168,8 +178,8 @@ export default async function EventDetailPage({
         )}
 
         {session?.user?.role === "SPONSOR" && !existingInquiry && (
-          <Card className="glass mt-4">
-            <CardContent className="pt-6">
+          <Card className="mt-5">
+            <CardContent>
               {event.tiers.length === 0 ? (
                 <p className="text-sm text-muted-foreground">
                   This event has no sponsorship tiers available right now.
@@ -183,7 +193,7 @@ export default async function EventDetailPage({
                       id="tierId"
                       name="tierId"
                       required
-                      className="border-input bg-input/30 flex h-9 w-full rounded-md border px-3 text-sm shadow-xs"
+                      className="border-input bg-card flex h-10 w-full rounded-lg border px-3 text-sm transition-colors outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50"
                     >
                       {event.tiers.map((tier) => (
                         <option key={tier.id} value={tier.id}>
@@ -201,9 +211,7 @@ export default async function EventDetailPage({
                       rows={4}
                     />
                   </div>
-                  <Button type="submit" className="bg-gradient-cosmic text-white hover:opacity-90">
-                    Express interest
-                  </Button>
+                  <Button type="submit">Express interest</Button>
                 </form>
               )}
             </CardContent>

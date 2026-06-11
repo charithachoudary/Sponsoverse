@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Calendar, MapPin, Users } from "lucide-react";
+import { ArrowUpRight, Calendar, MapPin, Users } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { TierBadge } from "@/components/sponsoverse/tier-badge";
@@ -14,18 +14,24 @@ export function EventCard({
   const minPrice = prices.length ? Math.min(...prices) : null;
 
   return (
-    <Link href={`/events/${event.id}`}>
-      <Card className="glass h-full transition-colors hover:border-white/20">
+    <Link href={`/events/${event.id}`} className="group block h-full">
+      <Card className="h-full transition-all duration-300 group-hover:-translate-y-0.5 group-hover:shadow-[0_16px_32px_-20px_rgba(33,29,22,0.3)] group-hover:ring-accent/40">
         <CardHeader>
           <div className="flex items-center justify-between gap-2">
             <Badge variant="secondary">{event.category}</Badge>
             {minPrice !== null && (
               <span className="text-sm text-muted-foreground">
-                from <span className="font-semibold text-foreground">${minPrice.toLocaleString()}</span>
+                from{" "}
+                <span className="font-heading font-semibold text-foreground">
+                  ${minPrice.toLocaleString()}
+                </span>
               </span>
             )}
           </div>
-          <CardTitle className="font-heading text-xl">{event.title}</CardTitle>
+          <CardTitle className="font-heading flex items-start justify-between gap-2 text-xl font-semibold tracking-tight">
+            <span>{event.title}</span>
+            <ArrowUpRight className="mt-1 h-4 w-4 shrink-0 text-muted-foreground/50 transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-accent" />
+          </CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
           <p className="line-clamp-2 text-sm text-muted-foreground">
@@ -49,7 +55,7 @@ export function EventCard({
               {event.audienceSize.toLocaleString()} attendees
             </span>
           </div>
-          <div className="flex flex-wrap gap-1.5">
+          <div className="flex flex-wrap gap-1.5 border-t border-border/70 pt-3">
             {event.tiers.map((tier) => (
               <TierBadge key={tier.id} tier={tier.name} />
             ))}

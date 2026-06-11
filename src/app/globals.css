@@ -53,50 +53,50 @@
 }
 
 :root {
-  /* Sponsoverse "Aurora Nova" theme */
-  --background: #05081f;
-  --foreground: #e5e7eb;
-  --card: oklch(1 0 0 / 4%);
-  --card-foreground: #e5e7eb;
-  --popover: #0a1033;
-  --popover-foreground: #e5e7eb;
-  --primary: #7c7dff;
-  --primary-foreground: #05081f;
-  --secondary: #121b4d;
-  --secondary-foreground: #e5e7eb;
-  --muted: #0a1033;
-  --muted-foreground: #aab0c5;
-  --accent: #ffd977;
-  --accent-foreground: #05081f;
-  --destructive: #ff7d6e;
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 12%);
-  --ring: #7c7dff;
-  --chart-1: #7c7dff;
-  --chart-2: #ffd977;
-  --chart-3: #ff7d6e;
-  --chart-4: #71d8ff;
-  --chart-5: #8fe7d8;
-  --radius: 1rem;
-  --sidebar: #0a1033;
-  --sidebar-foreground: #e5e7eb;
-  --sidebar-primary: #7c7dff;
-  --sidebar-primary-foreground: #05081f;
-  --sidebar-accent: #121b4d;
-  --sidebar-accent-foreground: #e5e7eb;
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: #7c7dff;
+  /* Sponsoverse "Paper & Ink" theme — warm editorial light */
+  --background: #faf7f1;
+  --foreground: #211d16;
+  --card: #fffdf8;
+  --card-foreground: #211d16;
+  --popover: #fffdf8;
+  --popover-foreground: #211d16;
+  --primary: #211d16;
+  --primary-foreground: #faf7f1;
+  --secondary: #efe8db;
+  --secondary-foreground: #3a342a;
+  --muted: #f1ece1;
+  --muted-foreground: #6f675a;
+  --accent: #d9481c;
+  --accent-foreground: #fff6f0;
+  --destructive: #bb3a22;
+  --border: #e5ddcc;
+  --input: #d9d1bf;
+  --ring: #d9481c;
+  --chart-1: #d9481c;
+  --chart-2: #4f55d2;
+  --chart-3: #0f8c94;
+  --chart-4: #a16207;
+  --chart-5: #211d16;
+  --radius: 0.9rem;
+  --sidebar: #f4efe5;
+  --sidebar-foreground: #211d16;
+  --sidebar-primary: #211d16;
+  --sidebar-primary-foreground: #faf7f1;
+  --sidebar-accent: #efe8db;
+  --sidebar-accent-foreground: #211d16;
+  --sidebar-border: #e5ddcc;
+  --sidebar-ring: #d9481c;
 
   /* Sponsorship tier accents */
-  --comet: #71d8ff;
-  --star: #7c7dff;
-  --nova: #ff7d6e;
-  --galaxy: #ffd977;
+  --comet: #0f8c94;
+  --star: #4f55d2;
+  --nova: #d9481c;
+  --galaxy: #a16207;
 
-  /* Brand gradients */
-  --gradient-cosmic: linear-gradient(135deg, #121b4d 0%, #7c7dff 100%);
-  --gradient-text: linear-gradient(135deg, #a6a8ff 0%, #71d8ff 55%, #8fe7d8 100%);
-  --gradient-nova: linear-gradient(135deg, #ff7d6e 0%, #7c7dff 50%, #71d8ff 100%);
+  /* Ink panel (inverted sections: CTA, footer) */
+  --ink: #1d1a14;
+  --ink-soft: #2a261e;
+  --paper: #faf7f1;
 }
 
 @layer base {
@@ -105,54 +105,52 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-feature-settings: "ss01", "cv11";
   }
   html {
     @apply font-sans;
-    color-scheme: dark;
+    color-scheme: light;
+  }
+  ::selection {
+    background: color-mix(in oklab, var(--accent) 22%, transparent);
   }
 }
 
 @layer utilities {
-  .glass {
-    @apply bg-card border border-white/10 backdrop-blur-xl;
+  /* Eyebrow label above section headings */
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-[11px] font-semibold tracking-[0.18em] uppercase;
+    color: var(--accent);
   }
-  .text-gradient-cosmic {
-    background-image: var(--gradient-text);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+  .eyebrow::before {
+    content: "";
+    @apply inline-block h-px w-6;
+    background-color: var(--accent);
   }
-  .bg-gradient-cosmic {
-    background-image: var(--gradient-cosmic);
+
+  /* Fine paper grain over the whole site */
+  .bg-grain {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
   }
-  .bg-gradient-nova {
-    background-image: var(--gradient-nova);
-  }
-  .animate-twinkle {
-    animation-name: twinkle;
-    animation-iteration-count: infinite;
-    animation-timing-function: ease-in-out;
-  }
-  .animate-marquee {
-    animation: marquee 32s linear infinite;
-  }
+
+  /* Hairline grid that fades out, for the hero */
   .bg-grid-fade {
     background-image:
-      linear-gradient(to right, rgba(255, 255, 255, 0.06) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+      linear-gradient(to right, rgba(33, 29, 22, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(33, 29, 22, 0.05) 1px, transparent 1px);
     background-size: 56px 56px;
-    -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 40%, transparent 100%);
-    mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 40%, transparent 100%);
+    -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 35%, transparent 100%);
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 35%, transparent 100%);
   }
-}
 
-@keyframes twinkle {
-  0%,
-  100% {
-    opacity: 0.15;
+  .animate-marquee {
+    animation: marquee 36s linear infinite;
   }
-  50% {
-    opacity: 0.9;
+
+  /* Inverted "ink" panel used for the CTA + footer */
+  .ink-panel {
+    background-color: var(--ink);
+    color: var(--paper);
   }
 }
 

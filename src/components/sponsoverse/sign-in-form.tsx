@@ -24,11 +24,7 @@ export function SignInForm() {
         <p className="text-sm text-destructive">{state.error}</p>
       )}
 
-      <Button
-        type="submit"
-        disabled={pending}
-        className="w-full bg-gradient-cosmic text-white hover:opacity-90"
-      >
+      <Button type="submit" size="lg" disabled={pending} className="w-full">
         {pending ? "Signing in..." : "Sign in"}
       </Button>
     </form>

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import { Inter, Space_Grotesk } from "next/font/google";
-import { OrbitBackground } from "@/components/sponsoverse/orbit-background";
+import { Inter, Fraunces } from "next/font/google";
+import { SiteBackdrop } from "@/components/sponsoverse/site-backdrop";
 import "./globals.css";
 
 const inter = Inter({
@@ -8,9 +8,11 @@ const inter = Inter({
   subsets: ["latin"],
 });
 
-const spaceGrotesk = Space_Grotesk({
+const fraunces = Fraunces({
   variable: "--font-heading",
   subsets: ["latin"],
+  axes: ["opsz"],
+  style: ["normal", "italic"],
 });
 
 export const metadata: Metadata = {
@@ -27,10 +29,10 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${spaceGrotesk.variable} h-full antialiased`}
+      className={`${inter.variable} ${fraunces.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <OrbitBackground />
+        <SiteBackdrop />
         {children}
       </body>
     </html>

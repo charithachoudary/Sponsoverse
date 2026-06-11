@@ -57,14 +57,17 @@ export default async function SponsorDiscoverPage({
   return (
     <div className="flex min-h-screen flex-col">
       <SiteHeader />
-      <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-10 sm:px-6">
-        <h1 className="font-heading text-3xl font-bold">Discover events</h1>
-        <p className="mt-1 text-muted-foreground">
+      <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-12 sm:px-6">
+        <span className="eyebrow">Discovery feed</span>
+        <h1 className="font-heading mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">
+          Discover events
+        </h1>
+        <p className="mt-2 text-muted-foreground">
           Browse live events looking for sponsors and find your perfect match.
         </p>
 
-        <div className="mt-8 grid gap-6 lg:grid-cols-[260px_1fr]">
-          <Card className="glass h-fit lg:sticky lg:top-24">
+        <div className="mt-10 grid gap-6 lg:grid-cols-[260px_1fr]">
+          <Card className="h-fit lg:sticky lg:top-24">
             <CardHeader>
               <CardTitle className="font-heading text-base">Filters</CardTitle>
             </CardHeader>
@@ -76,7 +79,7 @@ export default async function SponsorDiscoverPage({
                     id="category"
                     name="category"
                     defaultValue={category ?? ""}
-                    className="border-input bg-input/30 flex h-9 w-full rounded-md border px-3 text-sm shadow-xs"
+                    className="border-input bg-card flex h-10 w-full rounded-lg border px-3 text-sm transition-colors outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50"
                   >
                     <option value="">All categories</option>
                     {EVENT_CATEGORIES.map((c) => (
@@ -112,8 +115,8 @@ export default async function SponsorDiscoverPage({
                     placeholder="e.g. 1000"
                   />
                 </div>
-                <div className="flex gap-2">
-                  <Button type="submit" className="flex-1 bg-gradient-cosmic text-white hover:opacity-90">
+                <div className="flex gap-2 pt-1">
+                  <Button type="submit" className="flex-1">
                     Apply
                   </Button>
                   <Button type="button" variant="outline" render={<Link href="/sponsor" />}>
@@ -126,7 +129,7 @@ export default async function SponsorDiscoverPage({
 
           <div>
             {events.length === 0 ? (
-              <Card className="glass">
+              <Card className="border-dashed bg-transparent shadow-none ring-0 border">
                 <CardContent className="py-16 text-center text-muted-foreground">
                   No events match your filters yet. Try widening your search.
                 </CardContent>
@@ -141,21 +144,25 @@ export default async function SponsorDiscoverPage({
           </div>
         </div>
 
-        <div className="mt-12">
-          <h2 className="font-heading text-xl font-bold">
-            My inquiries ({inquiries.length})
+        <div className="mt-16 border-t border-border/70 pt-10">
+          <h2 className="font-heading text-2xl font-semibold tracking-tight">
+            My inquiries{" "}
+            <span className="text-muted-foreground">({inquiries.length})</span>
           </h2>
           {inquiries.length === 0 ? (
             <p className="mt-4 text-sm text-muted-foreground">
               You haven&apos;t expressed interest in any events yet.
             </p>
           ) : (
-            <div className="mt-4 space-y-3">
+            <div className="mt-5 space-y-3">
               {inquiries.map((inquiry) => (
-                <Card key={inquiry.id} className="glass">
-                  <CardContent className="flex flex-wrap items-center justify-between gap-2 pt-6">
+                <Card key={inquiry.id}>
+                  <CardContent className="flex flex-wrap items-center justify-between gap-2">
                     <div>
-                      <Link href={`/events/${inquiry.eventId}`} className="font-medium hover:underline">
+                      <Link
+                        href={`/events/${inquiry.eventId}`}
+                        className="font-medium underline-offset-4 hover:text-accent hover:underline"
+                      >
                         {inquiry.event.title}
                       </Link>
                       <p className="text-xs text-muted-foreground">

@@ -2,28 +2,31 @@ import Link from "next/link";
 import { auth, signOut } from "@/lib/auth";
 import { Button } from "@/components/ui/button";
 
+export function Wordmark({ className }: { className?: string }) {
+  return (
+    <span className={`font-heading text-[22px] font-semibold tracking-tight ${className ?? ""}`}>
+      Sponsoverse<span className="text-accent">.</span>
+    </span>
+  );
+}
+
 export async function SiteHeader() {
   const session = await auth();
 
   return (
-    <header className="sticky top-4 z-50 mx-auto w-[calc(100%-2rem)] max-w-6xl px-0">
-      <div className="flex h-16 items-center justify-between rounded-2xl border border-white/10 bg-white/5 px-4 shadow-lg shadow-black/20 backdrop-blur-xl sm:px-6">
-        <Link href="/" className="font-heading text-xl font-bold tracking-tight">
-          <span className="text-gradient-cosmic">Sponsoverse</span>
+    <header className="sticky top-0 z-50 border-b border-border/70 bg-background/85 backdrop-blur-md">
+      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
+        <Link href="/" className="transition-opacity hover:opacity-80">
+          <Wordmark />
         </Link>
 
-        <nav className="flex items-center gap-2 sm:gap-4">
+        <nav className="flex items-center gap-1.5 sm:gap-3">
           {!session?.user && (
             <>
               <Button variant="ghost" render={<Link href="/sign-in" />}>
                 Sign in
               </Button>
-              <Button
-                render={<Link href="/sign-up" />}
-                className="bg-gradient-cosmic text-white hover:opacity-90"
-              >
-                Get started
-              </Button>
+              <Button render={<Link href="/sign-up" />}>Get started</Button>
             </>
           )}
 
@@ -38,7 +41,7 @@ export async function SiteHeader() {
                   await signOut({ redirectTo: "/" });
                 }}
               >
-                <Button variant="ghost" type="submit">
+                <Button variant="outline" type="submit">
                   Sign out
                 </Button>
               </form>
@@ -56,7 +59,7 @@ export async function SiteHeader() {
                   await signOut({ redirectTo: "/" });
                 }}
               >
-                <Button variant="ghost" type="submit">
+                <Button variant="outline" type="submit">
                   Sign out
                 </Button>
               </form>
