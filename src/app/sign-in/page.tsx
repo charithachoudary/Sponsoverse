@@ -16,10 +16,10 @@ export default function SignInPage() {
       <main className="flex flex-1 items-center justify-center px-4 py-14">
         <div className="w-full max-w-md">
           <span className="eyebrow">Welcome back</span>
-          <h1 className="font-heading mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">
-            Sign in to <span className="italic text-accent">Sponsoverse</span>
+          <h1 className="font-heading mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
+            Sign in to <span className="text-gradient-brand">SponsoVerse</span>
           </h1>
-          <Card className="mt-8 shadow-[0_16px_40px_-24px_rgba(33,29,22,0.25)] [--card-spacing:--spacing(6)]">
+          <Card className="mt-8 bg-card/80 shadow-[0_24px_48px_-24px_rgba(0,0,0,0.6)] [--card-spacing:--spacing(6)]">
             <CardHeader>
               <CardTitle>Your account</CardTitle>
               <CardDescription>Sign in to your account to continue.</CardDescription>

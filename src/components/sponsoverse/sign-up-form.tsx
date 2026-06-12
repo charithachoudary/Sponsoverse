@@ -72,7 +72,7 @@ export function SignUpForm({ defaultRole }: { defaultRole: Role }) {
             </div>
             <div className="space-y-2">
               <Label htmlFor="budgetRange">Typical budget (optional)</Label>
-              <Input id="budgetRange" name="budgetRange" placeholder="e.g. $1k - $10k" />
+              <Input id="budgetRange" name="budgetRange" placeholder="e.g. ₹25,000 – ₹1,00,000" />
             </div>
           </div>
           <div className="space-y-2">

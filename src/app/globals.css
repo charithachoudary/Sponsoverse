@@ -53,50 +53,48 @@
 }
 
 :root {
-  /* Sponsoverse "Paper & Ink" theme — warm editorial light */
-  --background: #faf7f1;
-  --foreground: #211d16;
-  --card: #fffdf8;
-  --card-foreground: #211d16;
-  --popover: #fffdf8;
-  --popover-foreground: #211d16;
-  --primary: #211d16;
-  --primary-foreground: #faf7f1;
-  --secondary: #efe8db;
-  --secondary-foreground: #3a342a;
-  --muted: #f1ece1;
-  --muted-foreground: #6f675a;
-  --accent: #d9481c;
-  --accent-foreground: #fff6f0;
-  --destructive: #bb3a22;
-  --border: #e5ddcc;
-  --input: #d9d1bf;
-  --ring: #d9481c;
-  --chart-1: #d9481c;
-  --chart-2: #4f55d2;
-  --chart-3: #0f8c94;
-  --chart-4: #a16207;
-  --chart-5: #211d16;
+  /* SponsoVerse "Deep Space" theme — premium navy with cosmic orange & warm gold */
+  --background: #08111f;
+  --foreground: #e9eef7;
+  --card: #0e1b2e;
+  --card-foreground: #e9eef7;
+  --popover: #112137;
+  --popover-foreground: #e9eef7;
+  --primary: #ff6b35;
+  --primary-foreground: #1c0d04;
+  --secondary: #16283f;
+  --secondary-foreground: #d8e1ee;
+  --muted: #122036;
+  --muted-foreground: #93a1b7;
+  --accent: #f4b860;
+  --accent-foreground: #211302;
+  --destructive: #ff6d5c;
+  --border: oklch(0.95 0.01 250 / 9%);
+  --input: oklch(0.95 0.01 250 / 12%);
+  --ring: #ff6b35;
+  --chart-1: #ff6b35;
+  --chart-2: #f4b860;
+  --chart-3: #4fd1e0;
+  --chart-4: #8b93ff;
+  --chart-5: #e9eef7;
   --radius: 0.9rem;
-  --sidebar: #f4efe5;
-  --sidebar-foreground: #211d16;
-  --sidebar-primary: #211d16;
-  --sidebar-primary-foreground: #faf7f1;
-  --sidebar-accent: #efe8db;
-  --sidebar-accent-foreground: #211d16;
-  --sidebar-border: #e5ddcc;
-  --sidebar-ring: #d9481c;
+  --sidebar: #0e1b2e;
+  --sidebar-foreground: #e9eef7;
+  --sidebar-primary: #ff6b35;
+  --sidebar-primary-foreground: #1c0d04;
+  --sidebar-accent: #16283f;
+  --sidebar-accent-foreground: #e9eef7;
+  --sidebar-border: oklch(0.95 0.01 250 / 9%);
+  --sidebar-ring: #ff6b35;
 
-  /* Sponsorship tier accents */
-  --comet: #0f8c94;
-  --star: #4f55d2;
-  --nova: #d9481c;
-  --galaxy: #a16207;
+  /* Sponsorship tier accents (tuned for dark) */
+  --comet: #4fd1e0;
+  --star: #8b93ff;
+  --nova: #ff6b35;
+  --galaxy: #f4b860;
 
-  /* Ink panel (inverted sections: CTA, footer) */
-  --ink: #1d1a14;
-  --ink-soft: #2a261e;
-  --paper: #faf7f1;
+  /* Brand gradient: cosmic orange → warm gold */
+  --gradient-brand: linear-gradient(120deg, #ff6b35 0%, #f4b860 100%);
 }
 
 @layer base {
@@ -105,21 +103,20 @@
   }
   body {
     @apply bg-background text-foreground;
-    font-feature-settings: "ss01", "cv11";
   }
   html {
     @apply font-sans;
-    color-scheme: light;
+    color-scheme: dark;
   }
   ::selection {
-    background: color-mix(in oklab, var(--accent) 22%, transparent);
+    background: color-mix(in oklab, var(--primary) 35%, transparent);
   }
 }
 
 @layer utilities {
-  /* Eyebrow label above section headings */
+  /* Small uppercase label above section headings */
   .eyebrow {
-    @apply inline-flex items-center gap-2 text-[11px] font-semibold tracking-[0.18em] uppercase;
+    @apply inline-flex items-center gap-2 text-[11px] font-semibold tracking-[0.2em] uppercase;
     color: var(--accent);
   }
   .eyebrow::before {
@@ -128,29 +125,43 @@
     background-color: var(--accent);
   }
 
-  /* Fine paper grain over the whole site */
-  .bg-grain {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  /* Brand gradient text (used for "Universe", metrics, etc.) */
+  .text-gradient-brand {
+    background-image: var(--gradient-brand);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .bg-gradient-brand {
+    background-image: var(--gradient-brand);
   }
 
-  /* Hairline grid that fades out, for the hero */
-  .bg-grid-fade {
-    background-image:
-      linear-gradient(to right, rgba(33, 29, 22, 0.05) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(33, 29, 22, 0.05) 1px, transparent 1px);
-    background-size: 56px 56px;
-    -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 35%, transparent 100%);
-    mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 35%, transparent 100%);
+  /* Frosted surface for the floating nav and overlay chips */
+  .glass {
+    @apply border border-white/10 bg-white/[0.05] backdrop-blur-xl;
+  }
+
+  /* Elevated card glow on hover */
+  .glow-hover {
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease,
+      border-color 0.3s ease;
+  }
+  .glow-hover:hover {
+    transform: translateY(-4px);
+    border-color: color-mix(in oklab, var(--primary) 35%, transparent);
+    box-shadow:
+      0 0 0 1px color-mix(in oklab, var(--primary) 18%, transparent),
+      0 24px 48px -24px rgba(0, 0, 0, 0.6),
+      0 0 56px -24px color-mix(in oklab, var(--primary) 45%, transparent);
   }
 
   .animate-marquee {
     animation: marquee 36s linear infinite;
   }
-
-  /* Inverted "ink" panel used for the CTA + footer */
-  .ink-panel {
-    background-color: var(--ink);
-    color: var(--paper);
+  .animate-twinkle {
+    animation: twinkle ease-in-out infinite;
   }
 }
 
@@ -160,5 +171,15 @@
   }
   to {
     transform: translateX(-50%);
+  }
+}
+
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.12;
+  }
+  50% {
+    opacity: 0.7;
   }
 }

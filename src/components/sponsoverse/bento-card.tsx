@@ -10,7 +10,7 @@ export function BentoCard({
   return (
     <div
       className={cn(
-        "group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-card p-6 shadow-[0_1px_2px_rgba(33,29,22,0.04)] transition-all duration-300 hover:-translate-y-1 hover:border-accent/40 hover:shadow-[0_20px_40px_-24px_rgba(33,29,22,0.25)] sm:p-8",
+        "glow-hover group relative flex flex-col overflow-hidden rounded-2xl border border-white/[0.08] bg-card/80 p-6 shadow-[0_1px_0_rgba(255,255,255,0.04)_inset,0_8px_24px_-16px_rgba(0,0,0,0.5)] sm:p-8",
         className,
       )}
     >

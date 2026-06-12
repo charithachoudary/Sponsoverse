@@ -15,7 +15,7 @@ export function EventCard({
 
   return (
     <Link href={`/events/${event.id}`} className="group block h-full">
-      <Card className="h-full transition-all duration-300 group-hover:-translate-y-0.5 group-hover:shadow-[0_16px_32px_-20px_rgba(33,29,22,0.3)] group-hover:ring-accent/40">
+      <Card className="h-full bg-card/80 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:shadow-[0_20px_40px_-20px_rgba(0,0,0,0.6)] group-hover:ring-primary/40">
         <CardHeader>
           <div className="flex items-center justify-between gap-2">
             <Badge variant="secondary">{event.category}</Badge>
@@ -23,14 +23,14 @@ export function EventCard({
               <span className="text-sm text-muted-foreground">
                 from{" "}
                 <span className="font-heading font-semibold text-foreground">
-                  ${minPrice.toLocaleString()}
+                  ₹{minPrice.toLocaleString("en-IN")}
                 </span>
               </span>
             )}
           </div>
           <CardTitle className="font-heading flex items-start justify-between gap-2 text-xl font-semibold tracking-tight">
             <span>{event.title}</span>
-            <ArrowUpRight className="mt-1 h-4 w-4 shrink-0 text-muted-foreground/50 transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-accent" />
+            <ArrowUpRight className="mt-1 h-4 w-4 shrink-0 text-muted-foreground/50 transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-primary" />
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">

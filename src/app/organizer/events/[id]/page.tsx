@@ -84,7 +84,7 @@ export default async function ManageEventPage({
                   <div className="flex items-center justify-between">
                     <TierBadge tier={tier.name} />
                     <span className="font-heading text-lg font-semibold">
-                      ${tier.price.toLocaleString()}
+                      ₹{tier.price.toLocaleString("en-IN")}
                     </span>
                   </div>
                 </CardHeader>

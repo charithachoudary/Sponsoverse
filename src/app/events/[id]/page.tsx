@@ -108,7 +108,7 @@ export default async function EventDetailPage({
                   <div className="flex items-center justify-between">
                     <TierBadge tier={tier.name} />
                     <span className="font-heading text-lg font-semibold">
-                      ${tier.price.toLocaleString()}
+                      ₹{tier.price.toLocaleString("en-IN")}
                     </span>
                   </div>
                 </CardHeader>
@@ -197,7 +197,7 @@ export default async function EventDetailPage({
                     >
                       {event.tiers.map((tier) => (
                         <option key={tier.id} value={tier.id}>
-                          {tier.name} — ${tier.price.toLocaleString()}
+                          {tier.name} — ₹{tier.price.toLocaleString("en-IN")}
                         </option>
                       ))}
                     </select>

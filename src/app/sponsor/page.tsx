@@ -105,14 +105,14 @@ export default async function SponsorDiscoverPage({
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="maxBudget">Max. tier price ($)</Label>
+                  <Label htmlFor="maxBudget">Max. tier price (₹)</Label>
                   <Input
                     id="maxBudget"
                     name="maxBudget"
                     type="number"
                     min={0}
                     defaultValue={maxBudget}
-                    placeholder="e.g. 1000"
+                    placeholder="e.g. 50000"
                   />
                 </div>
                 <div className="flex gap-2 pt-1">

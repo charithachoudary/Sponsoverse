@@ -127,13 +127,13 @@ export default async function NewEventPage() {
                   </div>
                   <div className="grid gap-4 sm:grid-cols-2">
                     <div className="space-y-2">
-                      <Label htmlFor={`tier_${tier.name}_price`}>Price (USD)</Label>
+                      <Label htmlFor={`tier_${tier.name}_price`}>Price (₹)</Label>
                       <Input
                         id={`tier_${tier.name}_price`}
                         name={`tier_${tier.name}_price`}
                         type="number"
                         min={0}
-                        placeholder="e.g. 500"
+                        placeholder="e.g. 25000"
                       />
                     </div>
                     <div className="space-y-2">
